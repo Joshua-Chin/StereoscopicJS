@@ -14,7 +14,11 @@ window.onload = function() {
 	var scene = new THREE.Scene();
 	var camera = new THREE.PerspectiveCamera(75, hiddenCanvas.width / hiddenCanvas.height, 0.1, 1000);
 
-	var cube = new THREE.TorusGeometry(1, 0.4, 80, 60);
+	var cube = new THREE.TorusGeometry(.5, 0.2, 80, 60);
+    var cube1 = new THREE.TetrahedronGeometry(1);
+    var cube2 = new THREE.SphereGeometry(4, 50, 50);
+    var cube3 = new THREE.CylinderGeometry(2,2,5, 20, 20);
+
 
 	var white = new THREE.MeshPhongMaterial({
 		color : 0xffffff
@@ -28,17 +32,22 @@ window.onload = function() {
 	var blue = new THREE.MeshPhongMaterial({
 		color : 0x0000ff
 	});
+    var purple = new THREE.MeshPhongMaterial({color:0xff00ff});
 	var redCube = new THREE.Mesh(cube, white);
-	var greenCube = new THREE.Mesh(cube, white);
-	var blueCube = new THREE.Mesh(cube, white);
-
-	redCube.position.set(0, 0, 2);
-	greenCube.position.set(2, 0, 0);
-	blueCube.position.set(-2, 5, -20);
-
+	redCube.position.set(0, 0, 5);
 	scene.add(redCube);
-	scene.add(greenCube);
-	scene.add(blueCube);
+
+	var redCube1 = new THREE.Mesh(cube1, white);
+	redCube1.position.set(-5, 0, 0);
+	scene.add(redCube1);
+
+	var redCube2 = new THREE.Mesh(cube3, white);
+	redCube2.position.set(7, 0, -5);
+	scene.add(redCube2);
+
+	var redCube3 = new THREE.Mesh(cube2, white);
+	redCube3.position.set(0, 10, -20);
+	scene.add(redCube3);
 
 	var light = new THREE.DirectionalLight(0xffffff);
 	light.position.set(0, 3, 7);
@@ -46,16 +55,12 @@ window.onload = function() {
 
 	camera.position.z = 10;
 
+    var angle = 0;
+
 	var render = function() {
 		requestAnimationFrame(render);
 		
-		redCube.rotation.x += 0.01;
-		redCube.rotation.y += 0.01;
-		blueCube.rotation.x += 0.01;
-		blueCube.rotation.y += 0.01;
-		greenCube.rotation.x += 0.01;
-		greenCube.rotation.y += 0.01;
-		
+
 		camera.position.x = -0.25;
 		light.color.setHex(0xff0000);
 		renderer.render(scene, camera);
