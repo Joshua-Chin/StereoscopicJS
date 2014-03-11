@@ -56,18 +56,18 @@ window.onload = function() {
 		greenCube.rotation.x += 0.01;
 		greenCube.rotation.y += 0.01;
 		
-		camera.position.x = -1.5;
+		camera.position.x = -0.25;
 		light.color.setHex(0xff0000);
 		renderer.render(scene, camera);
 		hiddenCtx1.drawImage(hiddenCanvas, 0, 0);
 		
-		camera.position.x = 1.5;
+		camera.position.x = 0.25;
 		light.color.setHex(0x00ffff);
 		renderer.render(scene, camera);
 		ctx.globalCompositeOperation = "copy";
-		ctx.drawImage(hiddenCanvas1, 0, 0);
+		ctx.drawImage(hiddenCanvas1, -100, 0);
 		ctx.globalCompositeOperation = "lighter";
-		ctx.drawImage(hiddenCanvas, 0, 0);
+		ctx.drawImage(hiddenCanvas, 100, 0);
 	};
 	render();
 };
