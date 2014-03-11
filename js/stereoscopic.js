@@ -65,9 +65,9 @@ window.onload = function() {
 		light.color.setHex(0x00ffff);
 		renderer.render(scene, camera);
 		ctx.globalCompositeOperation = "copy";
-		ctx.drawImage(hiddenCanvas1, -100, 0);
+		ctx.drawImage(hiddenCanvas1, -10, 0);
 		ctx.globalCompositeOperation = "lighter";
-		ctx.drawImage(hiddenCanvas, 100, 0);
+		ctx.drawImage(hiddenCanvas, 10, 0);
 	};
 	render();
 };
